@@ -153,10 +153,6 @@ jobs:
             sudo apt update
             sudo apt install ansible
       - run:
-          name: install tar & gzip
-          command: |
-            yum install -y tar gzip
-      - run:
           name: configure server using ansible
           command: |
             cd .circleci/ansible
