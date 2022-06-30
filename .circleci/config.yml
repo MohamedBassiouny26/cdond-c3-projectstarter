@@ -9,6 +9,7 @@ jobs:
       - run:
           name: build front end steps
           command: |
+            ls
             cd frontend
             npm install
             npm run build
