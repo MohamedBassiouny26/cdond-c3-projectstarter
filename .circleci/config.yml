@@ -135,6 +135,20 @@ jobs:
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
+  configure-infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
+      - run:
+        name: install ansible
+        command: |
+          apk add --update ansible
+      - attach_workspace:
+          at: ~/
+
 workflows:
   default:
     jobs:
