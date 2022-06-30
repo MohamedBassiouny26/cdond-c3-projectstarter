@@ -27,7 +27,7 @@ jobs:
             npm install
             npm run build
 
-  test-forntend:
+  test-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
