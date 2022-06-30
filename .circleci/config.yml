@@ -55,11 +55,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test back end steps
+          name: scan frontend steps
           command: |
             cd frontend
             npm install
-            npm audit --fix-level=critical --force
+            npm audit fix --force
             npm audit --audit-level=critical
   scan-backend:
     docker:
@@ -67,7 +67,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test back end steps
+          name: scan backend steps
           command: |
             cd backend
             npm install
