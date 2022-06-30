@@ -1,5 +1,8 @@
 # version of circle ci cloud
 version: 2.1
+#add slack orbs
+orbs:
+  slack: circleci/slack@4.10.1
 #jobs have stesp of run command
 jobs:
   build-frontend:
@@ -49,6 +52,10 @@ jobs:
             cd backend
             npm install
             npm run test
+      - slack/notify:
+          # channel: ABCXYZ
+          event: fail
+          template: test-backend-fail
   scan-frontend:
     docker:
       - image: circleci/node:13.8.0
