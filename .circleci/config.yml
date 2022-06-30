@@ -3,14 +3,15 @@ version: 2.1
 #jobs have stesp of run command
 jobs:
   build-frontend:
-    - image: circleci/node:13.8.0
-  steps:
-    - run:
-        name: build front end steps
-        command: |
-          cd frontend
-          npm install
-          npm run build
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: build front end steps
+          command: |
+            cd frontend
+            npm install
+            npm run build
 
 workflows:
   default:
