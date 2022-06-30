@@ -28,6 +28,15 @@ commands:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
+  install-ansible:
+    description: install ansible.
+    steps:
+      - run:
+          name: install ansible
+          command: |
+            sudo apt update
+            sudo apt install ansible
+
   revert-migrations:
     description: Revert the last migration
     parameters:
@@ -71,7 +80,6 @@ jobs:
             cd backend
             npm install
             npm run build
-
   test-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -148,10 +156,15 @@ jobs:
       - run:
           name: Add the EC2 instance IP to the Ansible inventory
           command: |
-            aws ec2 describe-instances \
+            BACKEND_IP=$(aws ec2 describe-instances \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
             --filters "Name=tag:udapeople,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-            --output text >> .circleci/ansible/inventory
+            --output text)
+            export API_URL="http://${BACKEND_IP}:3030"
+            echo "API_URL = ${API_URL}"
+            echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
+            echo "$BACKEND_IP" >> .circleci/ansible/inventory
+            cat frontend/.env
       - persist_to_workspace:
           root: ~/
           paths:
@@ -168,11 +181,6 @@ jobs:
           fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
       - install-aws
       - run:
-          name: install ansible
-          command: |
-            sudo apt update
-            sudo apt install ansible
-      - run:
           name: configure server using ansible
           command: |
             cd .circleci/ansible
@@ -188,6 +196,7 @@ jobs:
     steps:
       - checkout
       - install-aws
+      - install-ansible
       - run:
           name: Run migrations
           command: |
@@ -205,6 +214,28 @@ jobs:
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations
+
+  deploy-frontend:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - attach_workspace:
+          at: ~/
+      - install-ansible
+      - run:
+        name: install node
+        command: |
+          sudo apt install nodejs
+      - run:
+        name: deploy frontend
+        command: |
+          cd frontend
+          npm install
+          npm run build
+          tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
+          aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+      - destroy-environment
+      - revert-migration
 workflows:
   default:
     jobs:
