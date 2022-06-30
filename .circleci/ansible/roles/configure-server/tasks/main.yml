@@ -1,0 +1,14 @@
+---
+- name: update package
+  become: true
+  shell: sudo apt update
+- name: install nodejs & npm
+  become: true
+  apt:
+    name: nodejs
+    state: latest
+- name: install pm2
+  become: true
+  npm:
+    name: pm2
+    global: yes
