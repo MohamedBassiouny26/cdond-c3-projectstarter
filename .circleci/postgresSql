@@ -1,0 +1,6 @@
+endpoint: database-1.ckesdyficonh.us-east-1.rds.amazonaws.com
+instance identifier: database-1
+Database name: postgres (default)
+Username: postgres
+Password: postgres123
+Port: 5432
