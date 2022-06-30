@@ -143,9 +143,9 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
       - run:
-        name: install ansible
-        command: |
-          apk add --update ansible
+          name: install ansible
+          command: |
+            apk add --update ansible
       - attach_workspace:
           at: ~/
 
