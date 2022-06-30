@@ -142,15 +142,16 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
       - run:
-          name: install ansible
-          command: |
-            sudo apt install ansible -y
-      - run:
           name: install aws cli
           command: |
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install
+      - run:
+          name: install ansible
+          command: |
+            sudo apt update
+            sudo apt install ansible
       - run:
           name: install tar & gzip
           command: |
