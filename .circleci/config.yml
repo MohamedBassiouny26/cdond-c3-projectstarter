@@ -231,9 +231,7 @@ jobs:
       - run:
           name: deploy frontend
           command: |
-            ls
-            cd project
-            ls
+            ls ./project
             cd frontend
             npm install
             npm run build
@@ -259,8 +257,6 @@ jobs:
       - run:
           name: deploy frontend
           command: |
-            ls ./project
-            ls
             cd frontend
             npm install
             npm run build
