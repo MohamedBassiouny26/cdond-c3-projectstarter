@@ -221,6 +221,10 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
+      - run:
+          name: Install tar utility
+          command: |
+            yum install -y tar gzip
       - install-ansible
       - run:
           name: install node
