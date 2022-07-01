@@ -220,6 +220,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout
       - install-aws
       - install-ansible
       - attach_workspace:
