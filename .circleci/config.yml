@@ -231,7 +231,7 @@ jobs:
       - run:
           name: deploy frontend
           command: |
-            pwd
+            ls
             cd frontend
             npm install
             npm run build
