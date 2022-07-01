@@ -259,7 +259,7 @@ jobs:
       - run:
           name: deploy frontend
           command: |
-            cd ./project
+            ls ./project
             ls
             cd frontend
             npm install
