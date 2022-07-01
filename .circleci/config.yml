@@ -219,14 +219,10 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - run:
-          name: Install tar utility
-          command: |
-            yum install -y tar gzip
+      - install-aws
+      - install-ansible
       - attach_workspace:
           at: ~/
-      - install-ansible
-      - install-aws
       - run:
           name: install node
           command: |
