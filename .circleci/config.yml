@@ -223,7 +223,7 @@ jobs:
       - install-aws
       - install-ansible
       - attach_workspace:
-          at: ./
+          at: ~/
       - run:
           name: install node
           command: |
@@ -231,8 +231,7 @@ jobs:
       - run:
           name: deploy frontend
           command: |
-            ls ./project
-            cd project/frontend
+            cd ~/project/frontend
             npm install
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
