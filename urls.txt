@@ -1,3 +1,6 @@
 [URL01]
 name:Github repo
 link:https://github.com/MohamedBassiouny26/cdond-c3-projectstarter
+[URL02]
+name:S3 bucket url
+link:http://udapeople-2a7b56a.s3-website-us-east-1.amazonaws.com
