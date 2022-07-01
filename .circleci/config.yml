@@ -261,7 +261,6 @@ jobs:
           name: deploy backend
           command: |
             cd ~/project/backend
-            cd backend
             npm i
             npm run build
             cd ..
