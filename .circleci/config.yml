@@ -228,7 +228,7 @@ jobs:
       - run:
           name: install node
           command: |
-            sudo apt install nodejs
+            apk add --update curl nodejs npm
       - run:
           name: deploy frontend
           command: |
