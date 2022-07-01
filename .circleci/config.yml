@@ -17,7 +17,6 @@ commands:
           when: on_fail
           command: |
             aws cloudformation delete-stack --stack-name udapeople-backend-<<parameters.workflow_id>>
-            aws s3 rm s3://udapeople-prod-<<parameters.workflow_id>> --recursive
             aws cloudformation delete-stack --stack-name udapeople-frontend-<<parameters.workflow_id>>
   install-aws:
     description: install aws cli.
@@ -180,6 +179,7 @@ jobs:
       - add_ssh_keys:
           fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
       - install-aws
+      - install-ansible
       - run:
           name: configure server using ansible
           command: |
