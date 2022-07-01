@@ -223,7 +223,7 @@ jobs:
       - install-aws
       - install-ansible
       - attach_workspace:
-          at: ./
+          at: ~/
       - run:
           name: install node
           command: |
@@ -231,6 +231,7 @@ jobs:
       - run:
           name: deploy frontend
           command: |
+            pwd
             cd frontend
             npm install
             npm run build
