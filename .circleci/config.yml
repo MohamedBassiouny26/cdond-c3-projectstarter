@@ -242,6 +242,33 @@ jobs:
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations
+  deploy-backend:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - install-aws
+      - install-ansible
+      - add_ssh_keys:
+          fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
+      - attach_workspace:
+          at: ./
+      - run:
+          name: install node
+          command: |
+            sudo apt install nodejs
+      - run:
+          name: deploy frontend
+          command: |
+            cd ./project
+            ls
+            cd frontend
+            npm install
+            npm run build
+            tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
+            aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+      - destroy-environment:
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+      - revert-migrations
 workflows:
   default:
     jobs:
