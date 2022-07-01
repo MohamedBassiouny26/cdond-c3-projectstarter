@@ -217,7 +217,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: cimg/base:stable
     steps:
       - run:
           name: Install tar utility
@@ -226,6 +226,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - install-ansible
+      - install-aws
       - run:
           name: install node
           command: |
