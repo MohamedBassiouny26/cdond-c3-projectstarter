@@ -20,30 +20,12 @@
     pm2 stop default
     pm2 start main.js
   register: execute_node
-
 # - name: "move node modules"
 #   become: yes
 #   copy:
 #     src: ~/project/backend/node_modules
 #     dest: ./backend_app
-- name: "copy pachage.json"
-  become: yes
-  copy:
-    src: ~/project/backend/package.json
-    dest: ./backend_app
 
-- name: "install npm package"
-  become: true
-  command: |
-    ls
-    cd ./backend_app
-    npm install
-
-- name: "run server"
-  become: true
-  command: pm2 start -f ./main.js
-  args:
-    chdir: ./backend_app/dist
 # - name: Extract backend file
 #   become: true
 #   command: |
