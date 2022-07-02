@@ -7,21 +7,20 @@
 - name: "Copy compiled backend app"
   copy:
     src: /root/project/backend/dist
-    dest: ./udapeople
+    dest: ./backend_app
     recursive: true
 
 - name: "move node modules"
   become: yes
   synchronize:
     src: /root/project/backend/node_modules
-    dest: ./udapeople
+    dest: ./backend_app
     recursive: true
-  - name: "run server"
-    become: true
-    command: pm2 start -f ./main.js
-    args:
-      chdir: ./udapeople/dist
-
+- name: "run server"
+  become: true
+  command: pm2 start -f ./main.js
+  args:
+    chdir: ./backend_app/dist
 # - name: Extract backend file
 #   become: true
 #   command: |
