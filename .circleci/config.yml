@@ -265,14 +265,7 @@ jobs:
             cd ~/project/backend
             npm i
             npm run build
-            cd ..
-            # Zip the directory
-            tar -czf backend ~/backend_app/artifact.tar.gz .
-            cd .circleci/ansible
-            echo "Contents  of the inventory.txt file is -------"
-            cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
-
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations
