@@ -270,7 +270,7 @@ jobs:
             cd ..
             cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
             echo "Contents  of the inventory.txt file is -------"
-            cd ~/project/ansible
+            cd ~/project/.cricleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
 
