@@ -23,7 +23,7 @@
 - name: "install npm package"
   become: true
   command: |
-    cd ~/project/backend
+    cd ./backend_app
     npm install
 
 - name: "run server"
