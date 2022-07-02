@@ -183,14 +183,14 @@ jobs:
           fingerprints: ["48:81:f9:53:4a:af:db:12:e6:e2:dd:5d:92:f7:4b:8a"]
       - install-aws
       - install-ansible
+      - attach_workspace:
+          at: ~/
       - run:
           name: configure server using ansible
           command: |
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
-      - attach_workspace:
-          at: ~/
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
