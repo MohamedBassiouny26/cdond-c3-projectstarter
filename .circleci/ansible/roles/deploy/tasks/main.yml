@@ -6,7 +6,7 @@
 
 - name: "Copy compiled backend app"
   copy:
-    src: artifact.tar.gz
+    src: ~/project/artifact.tar.gz
     dest: "~/backend_app/artifact.tar.gz"
 
 - name: Extract backend file
