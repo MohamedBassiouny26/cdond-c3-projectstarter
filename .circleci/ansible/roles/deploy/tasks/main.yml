@@ -23,6 +23,7 @@
 - name: "install npm package"
   become: true
   command: |
+    ls
     cd ./backend_app
     npm install
 
