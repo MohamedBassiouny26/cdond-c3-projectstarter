@@ -11,10 +11,9 @@
 
 - name: "move node modules"
   become: yes
-  synchronize:
+  copy:
     src: ~/project/backend/node_modules
     dest: ./backend_app
-    recursive: true
 
 - name: "run server"
   become: true
