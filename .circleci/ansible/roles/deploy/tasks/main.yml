@@ -12,7 +12,7 @@
 - name: Extract backend file
   become: true
   command: |
-    df -h
+    ls
     cd ~/backend_app
     tar -xvf artifact.tar.gz
 
