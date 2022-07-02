@@ -163,9 +163,9 @@ jobs:
             export API_URL="http://${BACKEND_IP}:3030"
             echo "API_URL = ${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
-            echo "$BACKEND_IP" >> .circleci/ansible/inventory
+            echo "$BACKEND_IP" >> .circleci/ansible/inventory.txt
             echo "http://$BACKEND_IP:3030" >> .circleci/outputs/backend_url.txt
-            cat frontend/.env
+            cat .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
