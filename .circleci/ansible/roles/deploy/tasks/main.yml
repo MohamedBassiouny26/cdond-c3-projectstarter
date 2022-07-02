@@ -6,12 +6,14 @@
 
 - name: "Copy compiled backend app"
   copy:
-    src: ~/project/artifact.tar.gz
+    src: ~/backend_app/artifact.tar.gz
     dest: "~/backend_app/artifact.tar.gz"
 
 - name: Extract backend file
   become: true
   command: |
+    df -h
+    cd ~/backend_app
     tar -xvf artifact.tar.gz
 
 - name: deploay backend with ansible
