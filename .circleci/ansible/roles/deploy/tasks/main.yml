@@ -9,11 +9,22 @@
     src: ~/project/backend/dist
     dest: ./backend_app
 
-- name: "move node modules"
+# - name: "move node modules"
+#   become: yes
+#   copy:
+#     src: ~/project/backend/node_modules
+#     dest: ./backend_app
+- name: "copy pachage.json"
   become: yes
   copy:
-    src: ~/project/backend/node_modules
+    src: ~/project/backend/package.json
     dest: ./backend_app
+
+- name: "install npm package"
+  become: true
+  command: |
+    cd ~/project/backend
+    npm install
 
 - name: "run server"
   become: true
