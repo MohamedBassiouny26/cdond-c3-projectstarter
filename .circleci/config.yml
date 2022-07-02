@@ -187,6 +187,7 @@ jobs:
           name: configure server using ansible
           command: |
             cd .circleci/ansible
+            cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
       - attach_workspace:
           at: ~/
