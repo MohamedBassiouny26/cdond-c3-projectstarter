@@ -170,6 +170,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
+            - project/frontend/.env
             - project/.circleci/outputs/backend_url.txt
             - project/.circleci/ansible/inventory.txt
       - destroy-environment:
