@@ -326,8 +326,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - install_awscli
-      - install_nodejs
+      - install_aws
       - run:
           name: create new cloudfront
           command: |
