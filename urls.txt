@@ -1,9 +1,15 @@
 [URL01]
-name:Github repo
-link:https://github.com/MohamedBassiouny26/cdond-c3-projectstarter
+    name:Github repo
+    URL:https://github.com/MohamedBassiouny26/cdond-c3-projectstarter
 [URL02]
-name:S3 bucket url
-link:http://udapeople-2a7b56a.s3-website-us-east-1.amazonaws.com
+    name:S3 bucket url
+    URL:http://udapeople-dc7b6d5.s3-website-us-east-1.amazonaws.com/#/employees
 [URL03]
-CLOUD FRONT URL
-https://d6woruvlcokso.cloudfront.net/
+    name:CLOUD FRONT URL
+    URL:https://d6woruvlcokso.cloudfront.net/
+[URL04]
+    NAME: VERIFY BACKEND STATUS
+    URL:http://54.197.42.246:3030/api/status
+[URL05]
+    NAME: VERIFY prometheus server
+    URL: http://52.87.179.130:9090/targets
