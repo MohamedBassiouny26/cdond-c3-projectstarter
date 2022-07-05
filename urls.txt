@@ -3,13 +3,13 @@
     URL:https://github.com/MohamedBassiouny26/cdond-c3-projectstarter
 [URL02]
     name:S3 bucket url
-    URL:http://udapeople-2826f21.s3-website-us-east-1.amazonaws.com/#/employees
+    URL:http://udapeople-42c41b9.s3-website-us-east-1.amazonaws.com/#/employees
 [URL03]
     name:CLOUD FRONT URL
     URL:https://d6woruvlcokso.cloudfront.net/
 [URL04]
     NAME: VERIFY BACKEND STATUS
-    URL:http://52.90.79.5:3030/api/status
+    URL:http://35.175.142.125:3030/api/status
 [URL05]
     NAME: VERIFY prometheus server
     URL: http://18.212.12.185:9090/graph
