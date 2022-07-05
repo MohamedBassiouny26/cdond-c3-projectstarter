@@ -118,7 +118,6 @@ jobs:
             cd frontend
             npm install
             npm audit fix
-            npm audit --audit-level=critical
   scan-backend:
     docker:
       - image: circleci/node:13.8.0
